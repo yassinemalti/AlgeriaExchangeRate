@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "965797538797",
+    "firebase_url": "https://algeria-exchange-rate.firebaseio.com",
+    "project_id": "algeria-exchange-rate",
+    "storage_bucket": "algeria-exchange-rate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965797538797:android:710c7e7746eaa9d5",
+        "android_client_info": {
+          "package_name": "com.wordpress.yassinemalti.algeriaexchangerate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "965797538797-clhnk207n3ccbad1fli16usjqi633krf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADxbCsTJK13Pq_JoO4LlvLEZ0UdNDk5Jc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
