@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Algeria Exchange Rate</string>
+    <string name="app_name">أسعار صرف أهم العملات الأجنبية مقابل الدينار الجزائري في الأسواق الموازية</string>
+    <string name="title_activity_main">أسعار صرف أهم العملات الأجنبية مقابل الدينار الجزائري في الأسواق الموازية</string>
+    <string name="app_description">أسعار صرف أهم العملات الأجنبية مقابل الدينار الجزائري في الأسواق الموازية</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
