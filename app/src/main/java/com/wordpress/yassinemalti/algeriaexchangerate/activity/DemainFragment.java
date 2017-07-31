@@ -13,7 +13,7 @@ import android.webkit.WebViewClient;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
-import com.wordpress.yassinemalti.kooora.R;
+import com.wordpress.yassinemalti.algeriaexchangerate.R;
 
 public class DemainFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match

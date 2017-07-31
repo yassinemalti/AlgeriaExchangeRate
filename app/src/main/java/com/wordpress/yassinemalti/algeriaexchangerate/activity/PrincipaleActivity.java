@@ -25,8 +25,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
-import com.wordpress.yassinemalti.kooora.BuildConfig;
-import com.wordpress.yassinemalti.kooora.R;
+import com.wordpress.yassinemalti.algeriaexchangerate.BuildConfig;
+import com.wordpress.yassinemalti.algeriaexchangerate.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
