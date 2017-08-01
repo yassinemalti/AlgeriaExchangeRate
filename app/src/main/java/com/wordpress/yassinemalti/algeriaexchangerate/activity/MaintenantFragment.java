@@ -70,7 +70,7 @@ public class MaintenantFragment extends Fragment {
         NativeExpressAdView adBanner_maintenant = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_maintenant);
         AdRequest request_maintenant = new AdRequest.Builder().build();
         adBanner_maintenant.loadAd(request_maintenant);
-        txtDesc = (TextView) rootView.findViewById(R.id.desctxtt);
+        txtDesc = (TextView) rootView.findViewById(R.id.desctxt00);
 
         new Description().execute();
         return rootView;
@@ -124,7 +124,45 @@ public class MaintenantFragment extends Fragment {
                 String dateDerniereMiseJourText = dateDerniereMiseJour.text();
                 String tableDesTauxDeChanges = document.select("#secondary table").text();
                 String myDesc = dateDerniereMiseJourText + "\n" + tableDesTauxDeChanges;
-                desc = getWords(myDesc).toString();
+                //desc = getWords(myDesc).toString();
+
+                List<Integer> wordsIndex = new ArrayList<Integer>();
+
+                wordsIndex.add(3); wordsIndex.add(4); wordsIndex.add(5); wordsIndex.add(0);
+                wordsIndex.add(-7); wordsIndex.add(-8); wordsIndex.add(-9);wordsIndex.add(0);
+                wordsIndex.add(-10); wordsIndex.add(10); wordsIndex.add(12);wordsIndex.add(0);
+                wordsIndex.add(-11); wordsIndex.add(16); wordsIndex.add(18);wordsIndex.add(0);
+                wordsIndex.add(-12); wordsIndex.add(22); wordsIndex.add(24);wordsIndex.add(0);
+                wordsIndex.add(-13); wordsIndex.add(29); wordsIndex.add(31);wordsIndex.add(0);
+                wordsIndex.add(-14); wordsIndex.add(36); wordsIndex.add(38);wordsIndex.add(0);
+                wordsIndex.add(-15); wordsIndex.add(43); wordsIndex.add(45);wordsIndex.add(0);
+                wordsIndex.add(-16); wordsIndex.add(50); wordsIndex.add(52);wordsIndex.add(0);
+                wordsIndex.add(-17); wordsIndex.add(57); wordsIndex.add(59);wordsIndex.add(0);
+                wordsIndex.add(-18); wordsIndex.add(64); wordsIndex.add(66);wordsIndex.add(0);
+                wordsIndex.add(-19); wordsIndex.add(71); wordsIndex.add(73);wordsIndex.add(0);
+                wordsIndex.add(-20); wordsIndex.add(78); wordsIndex.add(80);wordsIndex.add(0);
+
+                desc = "";
+                for(int i=0; i<wordsIndex.size(); i++) {
+                    switch (wordsIndex.get(i)) {
+                        case 0 : desc += "\n"; break;
+                        case -7 : desc += "العملة "; break;
+                        case -8 : desc += "الشراء "; break;
+                        case -9 : desc += "البيع "; break;
+                        case -10 : desc += "اليورو "; break;
+                        case -11 : desc += "الدولار الأمريكي "; break;
+                        case -12 : desc += "الجنيه الإسترليني "; break;
+                        case -13 : desc += "الدولار الكندي "; break;
+                        case -14 : desc += "الفرنك السويسري "; break;
+                        case -15 : desc += "الليرة التركية "; break;
+                        case -16 : desc += "اليوان الصيني "; break;
+                        case -17 : desc += "الدرهم الإمراتي "; break;
+                        case -18 : desc += "الدرهم المغربي "; break;
+                        case -19 : desc += "الدينار التونسي "; break;
+                        case -20 : desc += "الريال السعودي "; break;
+                        default : desc += getWords(myDesc).get(wordsIndex.get(i)) + " ";
+                    }
+                }
 
             } catch (IOException ex) {
                 ex.printStackTrace();
