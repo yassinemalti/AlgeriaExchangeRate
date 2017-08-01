@@ -21,12 +21,13 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <WebView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:id="@+id/activity_maintenant_webview" />
+                <TextView
+                    android:id="@+id/desctxtt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/titlebutton"
+                    android:layout_centerInParent="true"
+                    android:scrollbars="vertical" />
 
             </LinearLayout>
 

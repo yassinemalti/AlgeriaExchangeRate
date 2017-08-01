@@ -9,18 +9,26 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.wordpress.yassinemalti.algeriaexchangerate.R;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
+import java.text.BreakIterator;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MaintenantFragment extends Fragment {
 
     private static final String TAG = "MaintenantFragment";
-    public WebView myWebView;
+    public TextView txtDesc;
+    String url = "https://www.devise-dz.com/";
     ProgressDialog progressDialog;
 
     private static final String ARG_PARAM1 = "param1";
@@ -62,8 +70,9 @@ public class MaintenantFragment extends Fragment {
         NativeExpressAdView adBanner_maintenant = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_maintenant);
         AdRequest request_maintenant = new AdRequest.Builder().build();
         adBanner_maintenant.loadAd(request_maintenant);
-        myWebView = (WebView) rootView.findViewById(R.id.activity_maintenant_webview);
-        new LoadPage().execute();
+        txtDesc = (TextView) rootView.findViewById(R.id.desctxtt);
+
+        new Description().execute();
         return rootView;
     }
 
@@ -95,7 +104,8 @@ public class MaintenantFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    private class LoadPage extends AsyncTask<Void, Void, Void> {
+    private class Description extends AsyncTask<Void, Void, Void> {
+        String desc;
 
         @Override
         protected void onPreExecute() {
@@ -108,21 +118,43 @@ public class MaintenantFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
+            try {
+                Document document = Jsoup.connect(url).get();
+                Element dateDerniereMiseJour = document.select("#secondary p").get(1);
+                String dateDerniereMiseJourText = dateDerniereMiseJour.text();
+                String tableDesTauxDeChanges = document.select("#secondary table").text();
+                String myDesc = dateDerniereMiseJourText + "\n" + tableDesTauxDeChanges;
+                desc = getWords(myDesc).toString();
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
 
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-
-            String maintenant_page_url = PrincipaleActivity.getmaintenant_page_url();
-            myWebView.loadUrl(maintenant_page_url);
-            WebSettings webSettings = myWebView.getSettings();
-            webSettings.setJavaScriptEnabled(true);
-            myWebView.setWebViewClient(new WebViewClient());
+            super.onPostExecute(aVoid);
+            txtDesc.setText(desc);
             progressDialog.dismiss();
-
         }
+    }
+
+    public static List<String> getWords(String text) {
+        List<String> words = new ArrayList<String>();
+        BreakIterator breakIterator = BreakIterator.getWordInstance();
+        breakIterator.setText(text);
+        int lastIndex = breakIterator.first();
+        while (BreakIterator.DONE != lastIndex) {
+            int firstIndex = lastIndex;
+            lastIndex = breakIterator.next();
+            if (lastIndex != BreakIterator.DONE && Character.isLetterOrDigit(text.charAt(firstIndex))) {
+                words.add(text.substring(firstIndex, lastIndex));
+            }
+        }
+
+        return words;
     }
 
 }
