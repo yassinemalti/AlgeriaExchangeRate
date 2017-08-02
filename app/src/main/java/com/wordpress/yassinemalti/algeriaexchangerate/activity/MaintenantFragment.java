@@ -124,7 +124,26 @@ public class MaintenantFragment extends Fragment {
                 String dateDerniereMiseJourText = dateDerniereMiseJour.text();
                 String tableDesTauxDeChanges = document.select("#secondary table").text();
                 String myDesc = dateDerniereMiseJourText + "\n" + tableDesTauxDeChanges;
+                List<String> words = new ArrayList<String>();
+                words = getWords(myDesc);
                 //desc = getWords(myDesc).toString();
+
+                switch (words.get(4)) {
+                    case "Janvier" : words.set(4,"جانفي"); break;
+                    case "Février" : words.set(4,"فيفري"); break;
+                    case "Mars" : words.set(4,"مارس"); break;
+                    case "Avril" : words.set(4,"أفريل"); break;
+                    case "Mai" : words.set(4,"ماي"); break;
+                    case "Juin" : words.set(4,"جوان"); break;
+                    case "Juillet" : words.set(4,"جويلية"); break;
+                    case "Août" : words.set(4,"أوت"); break;
+                    case "Septembre" : words.set(4,"سبتمبر"); break;
+                    case "Octobre" : words.set(4,"أكتوبر"); break;
+                    case "Novembre" : words.set(4,"نوفمبر"); break;
+                    case "Décembre" : words.set(4,"ديسمبر"); break;
+
+                    default : words.set(4,"جانفي");;
+                }
 
                 List<Integer> wordsIndex = new ArrayList<Integer>();
 
@@ -160,7 +179,15 @@ public class MaintenantFragment extends Fragment {
                         case -18 : desc += "الدرهم المغربي "; break;
                         case -19 : desc += "الدينار التونسي "; break;
                         case -20 : desc += "الريال السعودي "; break;
-                        default : desc += getWords(myDesc).get(wordsIndex.get(i)) + " ";
+                        default : desc += words.get(wordsIndex.get(i)) + " ";
+                    }
+                }
+
+                desc = desc.replace(',','.');
+                int descLength = desc.length();
+                for(int i=0; i<descLength-3; i++) {
+                    if(desc.charAt(i) !='.' && desc.charAt(i+1) =='0' && desc.charAt(i+2) =='0' && desc.charAt(i+3) ==' '){
+                        desc = new StringBuilder(desc).insert(i+1, ".").toString();
                     }
                 }
 
