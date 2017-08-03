@@ -4,15 +4,15 @@
     <group android:id="@+id/groupeprincipal" android:checkableBehavior="single">
         <item
             android:id="@+id/maintenant"
-            android:icon="@drawable/maintenant"
+            android:icon="@drawable/marcheparallele"
             android:title="السوق الموازية" />
         <item
             android:id="@+id/aujourdhui"
-            android:icon="@drawable/aujourdhui"
+            android:icon="@drawable/marcheofficiel"
             android:title="السوق الرسمية" />
         <item
             android:id="@+id/demain"
-            android:icon="@drawable/demain"
+            android:icon="@drawable/calculatrice"
             android:title="الآلة الحاسبة" />
     </group>
 
