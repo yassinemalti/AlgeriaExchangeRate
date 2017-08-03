@@ -1,7 +1,9 @@
 package com.wordpress.yassinemalti.algeriaexchangerate.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,22 +17,28 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.wordpress.yassinemalti.algeriaexchangerate.R;
 
-public class ActualitesFragment extends Fragment {
+public class MarcheOfficielFragment extends Fragment {
 
+    public WebView myWebView;
+    ProgressDialog progressDialog;
+
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-    public ActualitesFragment() {
-
+    public MarcheOfficielFragment() {
+        // Required empty public constructor
     }
 
-    public static ActualitesFragment newInstance(String param1, String param2) {
-        ActualitesFragment fragment = new ActualitesFragment();
+    public static MarcheOfficielFragment newInstance(String param1, String param2) {
+        MarcheOfficielFragment fragment = new MarcheOfficielFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -51,22 +59,12 @@ public class ActualitesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_actualites, container, false);
-        NativeExpressAdView adBanner_actualites = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_actualites);
-        AdRequest request_actualites = new AdRequest.Builder().build();
-        adBanner_actualites.loadAd(request_actualites);
-
-
-        WebView myWebView = (WebView) rootView.findViewById(R.id.activity_actualites_webview);
-        myWebView.loadUrl("http://m.kooora.com/?n=0&o=n");
-
-        // Enable Javascript
-        WebSettings webSettings = myWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        // Force links and redirects to open in the WebView instead of in a browser
-        myWebView.setWebViewClient(new WebViewClient());
-
+        View rootView = inflater.inflate(R.layout.fragment_marche_officiel, container, false);
+        NativeExpressAdView adBanner_aujourdhui = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_aujourdhui);
+        AdRequest request_aujourdhui = new AdRequest.Builder().build();
+        adBanner_aujourdhui.loadAd(request_aujourdhui);
+        myWebView = (WebView) rootView.findViewById(R.id.activity_aujourdhui_webview);
+        new LoadPage().execute();
         return rootView;
     }
 
@@ -98,4 +96,35 @@ public class ActualitesFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    private class LoadPage extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage("جاري التحديث...");
+            progressDialog.setIndeterminate(false);
+            progressDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+
+            String aujourdhui_page_url = PrincipaleActivity.getaujourdhui_page_url();
+            myWebView.loadUrl(aujourdhui_page_url);
+            WebSettings webSettings = myWebView.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+            myWebView.setWebViewClient(new WebViewClient());
+            progressDialog.dismiss();
+
+        }
+    }
+
 }

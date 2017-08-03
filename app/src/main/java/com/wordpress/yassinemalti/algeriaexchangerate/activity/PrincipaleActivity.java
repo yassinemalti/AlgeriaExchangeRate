@@ -34,12 +34,9 @@ import java.util.Date;
 
 public class PrincipaleActivity extends AppCompatActivity
         implements  NavigationView.OnNavigationItemSelectedListener,
-                    MaintenantFragment.OnFragmentInteractionListener,
-                    AjourdhuiFragment.OnFragmentInteractionListener,
-                    DemainFragment.OnFragmentInteractionListener,
-                    HierFragment.OnFragmentInteractionListener,
-                    ActualitesFragment.OnFragmentInteractionListener,
-                    LiensFragment.OnFragmentInteractionListener,
+                    MarcheParalleleFragment.OnFragmentInteractionListener,
+                    MarcheOfficielFragment.OnFragmentInteractionListener,
+                    CalculatriceFragment.OnFragmentInteractionListener,
                     AproposFragment.OnFragmentInteractionListener{
 
     SettingSQLiteDatabase mySettingSQLiteDatabase;
@@ -211,33 +208,18 @@ public class PrincipaleActivity extends AppCompatActivity
 
         switch (viewId) {
             case R.id.maintenant:
-                fragment = new MaintenantFragment();
-                title  = "مباريات الآن";
+                fragment = new MarcheParalleleFragment();
+                title  = "السوق الموازية";
                 viewIsAtHome = true;
                 break;
             case R.id.aujourdhui:
-                fragment = new AjourdhuiFragment();
-                title  = "مباريات اليوم";
+                fragment = new MarcheOfficielFragment();
+                title  = "السوق الرسمية";
                 viewIsAtHome = false;
                 break;
             case R.id.demain:
-                fragment = new DemainFragment();
-                title  = "مباريات الغد";
-                viewIsAtHome = false;
-                break;
-            case R.id.hier:
-                fragment = new HierFragment();
-                title  = "مباريات أمس";
-                viewIsAtHome = false;
-                break;
-            case R.id.actualites:
-                fragment = new ActualitesFragment();
-                title  = "أخبار الرياضة";
-                viewIsAtHome = false;
-                break;
-            case R.id.liens:
-                fragment = new LiensFragment();
-                title  = "روابط اليوم";
+                fragment = new CalculatriceFragment();
+                title  = "الآلة الحاسبة";
                 viewIsAtHome = false;
                 break;
             case R.id.partager:
@@ -248,7 +230,7 @@ public class PrincipaleActivity extends AppCompatActivity
                 sharingIntent.setType("text/plain");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.app_name);
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT,
-                        "https://play.google.com/store/apps/details?id=com.wordpress.yassinemalti.kooora");
+                        "https://play.google.com/store/apps/details?id=com.wordpress.yassinemalti.algeriaexchangerate");
                 startActivity(Intent.createChooser(sharingIntent, "شارك التطبيق عبر..."));
                 break;
             case R.id.apropos:

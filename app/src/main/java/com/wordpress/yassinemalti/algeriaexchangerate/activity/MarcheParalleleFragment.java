@@ -24,7 +24,7 @@ import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MaintenantFragment extends Fragment {
+public class MarcheParalleleFragment extends Fragment {
 
     private static final String TAG = "MaintenantFragment";
     public TextView txtDesc;
@@ -39,13 +39,13 @@ public class MaintenantFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public MaintenantFragment() {
+    public MarcheParalleleFragment() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static MaintenantFragment newInstance(String param1, String param2) {
-        MaintenantFragment fragment = new MaintenantFragment();
+    public static MarcheParalleleFragment newInstance(String param1, String param2) {
+        MarcheParalleleFragment fragment = new MarcheParalleleFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,7 +66,7 @@ public class MaintenantFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_maintenant, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_marche_parallele, container, false);
         NativeExpressAdView adBanner_maintenant = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_maintenant);
         AdRequest request_maintenant = new AdRequest.Builder().build();
         adBanner_maintenant.loadAd(request_maintenant);
@@ -186,7 +186,8 @@ public class MaintenantFragment extends Fragment {
                 desc = desc.replace(',','.');
                 int descLength = desc.length();
                 for(int i=0; i<descLength-3; i++) {
-                    if(desc.charAt(i) !='.' && desc.charAt(i+1) =='0' && desc.charAt(i+2) =='0' && desc.charAt(i+3) ==' '){
+                    if(desc.charAt(i) !='.' && desc.charAt(i+1) =='0'
+                            && desc.charAt(i+2) =='0' && desc.charAt(i+3) ==' '){
                         desc = new StringBuilder(desc).insert(i+1, ".").toString();
                     }
                 }

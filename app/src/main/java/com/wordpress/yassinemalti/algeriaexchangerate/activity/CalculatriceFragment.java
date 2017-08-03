@@ -15,7 +15,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.wordpress.yassinemalti.algeriaexchangerate.R;
 
-public class HierFragment extends Fragment {
+public class CalculatriceFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,12 +27,12 @@ public class HierFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public HierFragment() {
-
+    public CalculatriceFragment() {
+        // Required empty public constructor
     }
 
-    public static HierFragment newInstance(String param1, String param2) {
-        HierFragment fragment = new HierFragment();
+    public static CalculatriceFragment newInstance(String param1, String param2) {
+        CalculatriceFragment fragment = new CalculatriceFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -53,14 +53,13 @@ public class HierFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_hier, container, false);
-        NativeExpressAdView adBanner_hier = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_hier);
-        AdRequest request_hier = new AdRequest.Builder().build();
-        adBanner_hier.loadAd(request_hier);
+        View rootView = inflater.inflate(R.layout.fragment_calculatrice, container, false);
+        NativeExpressAdView adBanner_demain = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_demain);
+        AdRequest request_demain = new AdRequest.Builder().build();
+        adBanner_demain.loadAd(request_demain);
 
-
-        WebView myWebView = (WebView) rootView.findViewById(R.id.activity_hier_webview);
-        myWebView.loadUrl("http://m.kooora.com/?region=-3");
+        WebView myWebView = (WebView) rootView.findViewById(R.id.activity_demain_webview);
+        myWebView.loadUrl("http://m.kooora.com/?region=-4");
 
         // Enable Javascript
         WebSettings webSettings = myWebView.getSettings();

@@ -1,10 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    tools:context="com.wordpress.yassinemalti.algeriaexchangerate.activity.DemainFragment">
+    tools:context="com.wordpress.yassinemalti.algeriaexchangerate.activity.MarcheParalleleFragment">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/ScrollView01"
@@ -21,12 +21,13 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <WebView
+                <TextView
+                    android:id="@+id/desctxt00"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:id="@+id/activity_demain_webview" />
+                    android:layout_height="300dp"
+                    android:background="#fff"
+                    android:elevation="4dp"
+                    android:gravity="center" />
 
             </LinearLayout>
 
@@ -43,10 +44,10 @@
         android:layout_gravity="bottom|center_horizontal">
 
         <com.google.android.gms.ads.NativeExpressAdView
-            android:id="@+id/adBanner_demain"
+            android:id="@+id/adBanner_maintenant"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            ads:adUnitId="ca-app-pub-2326345806005611/1910138089"
+            ads:adUnitId="ca-app-pub-2326345806005611/2049738886"
             ads:adSize="280x70"/>
     </LinearLayout>
 

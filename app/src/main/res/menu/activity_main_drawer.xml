@@ -5,27 +5,15 @@
         <item
             android:id="@+id/maintenant"
             android:icon="@drawable/maintenant"
-            android:title="مباريات الآن" />
+            android:title="السوق الموازية" />
         <item
             android:id="@+id/aujourdhui"
             android:icon="@drawable/aujourdhui"
-            android:title="مباريات اليوم" />
+            android:title="السوق الرسمية" />
         <item
             android:id="@+id/demain"
             android:icon="@drawable/demain"
-            android:title="مباريات الغد" />
-        <item
-            android:id="@+id/hier"
-            android:icon="@drawable/hier"
-            android:title="مباريات أمس" />
-        <item
-            android:id="@+id/actualites"
-            android:icon="@drawable/actualites"
-            android:title="أخبار الرياضة" />
-        <item
-            android:id="@+id/liens"
-            android:icon="@drawable/liens"
-            android:title="روابط اليوم" />
+            android:title="الآلة الحاسبة" />
     </group>
 
     <group android:id="@+id/groupesecondaire" >
