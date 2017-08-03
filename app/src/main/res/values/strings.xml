@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">أسعار صرف الدينار الجزائري</string>
-    <string name="title_activity_main">أسعار صرف أهم العملات الأجنبية مقابل الدينار الجزائري في الأسواق الموازية و الرسمية</string>
+    <string name="app_name">صرف Sarf</string>
+    <string name="title_activity_main">صرف Sarf</string>
     <string name="app_description">أسعار صرف أهم العملات الأجنبية مقابل الدينار الجزائري في الأسواق الموازية و الرسمية</string>
     <string name="navigation_drawer_open">فتح</string>
     <string name="navigation_drawer_close">غلق</string>
