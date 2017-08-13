@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.wordpress.yassinemalti.algeriaexchangerate.R;
+import com.wordpress.yassinemalti.algeriaexchangerate.adapter.SimpleRecyclerAdapter;
+import com.wordpress.yassinemalti.algeriaexchangerate.model.VersionModel;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -30,6 +34,7 @@ public class MarcheParalleleFragment extends Fragment {
     public TextView txtDesc;
     String url = "https://www.devise-dz.com/";
     ProgressDialog progressDialog;
+    SimpleRecyclerAdapter adapter;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -71,6 +76,20 @@ public class MarcheParalleleFragment extends Fragment {
         AdRequest request_maintenant = new AdRequest.Builder().build();
         adBanner_maintenant.loadAd(request_maintenant);
         txtDesc = (TextView) rootView.findViewById(R.id.desctxt00);
+
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.devise_marcheparallele_scrollableview);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        List<String> list = new ArrayList<String>();
+        for (int i = 0; i < VersionModel.data.length; i++) {
+            list.add(VersionModel.data[i]);
+        }
+
+        adapter = new SimpleRecyclerAdapter(list);
+        recyclerView.setAdapter(adapter);
 
         new Description().execute();
         return rootView;
