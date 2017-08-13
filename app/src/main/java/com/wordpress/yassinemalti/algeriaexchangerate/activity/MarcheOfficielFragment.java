@@ -156,7 +156,7 @@ public class MarcheOfficielFragment extends Fragment {
 
                 List<Integer> wordsIndex = new ArrayList<Integer>();
 
-                wordsIndex.add(3); wordsIndex.add(4); wordsIndex.add(5); wordsIndex.add(0);
+                wordsIndex.add(-6); wordsIndex.add(3); wordsIndex.add(4); wordsIndex.add(5); wordsIndex.add(0);
                 wordsIndex.add(-7); wordsIndex.add(-8); wordsIndex.add(0);
                 wordsIndex.add(-10); wordsIndex.add(10); wordsIndex.add(0);
                 wordsIndex.add(-11); wordsIndex.add(16); wordsIndex.add(0);
@@ -174,6 +174,7 @@ public class MarcheOfficielFragment extends Fragment {
                 for(int i=0; i<wordsIndex.size(); i++) {
                     switch (wordsIndex.get(i)) {
                         case 0 : desc += "#"; break;
+                        case -6 : desc += "آخر تحديث "; break;
                         case -7 : desc += "العملة "; break;
                         case -8 : desc += "السعر "; break;
                         case -9 : desc += "السعر "; break;
