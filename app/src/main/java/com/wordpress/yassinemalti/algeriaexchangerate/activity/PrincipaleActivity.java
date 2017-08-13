@@ -1,5 +1,6 @@
 package com.wordpress.yassinemalti.algeriaexchangerate.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -8,16 +9,24 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,10 +36,14 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.wordpress.yassinemalti.algeriaexchangerate.BuildConfig;
 import com.wordpress.yassinemalti.algeriaexchangerate.R;
+import com.wordpress.yassinemalti.algeriaexchangerate.adapter.SimpleRecyclerAdapter;
+import com.wordpress.yassinemalti.algeriaexchangerate.model.VersionModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class PrincipaleActivity extends AppCompatActivity
         implements  NavigationView.OnNavigationItemSelectedListener,
@@ -208,7 +221,8 @@ public class PrincipaleActivity extends AppCompatActivity
 
         switch (viewId) {
             case R.id.maintenant:
-                fragment = new MarcheParalleleFragment();
+                fragment = new DummyFragment();
+                //fragment = new MarcheParalleleFragment();
                 title  = "السوق الموازية";
                 viewIsAtHome = true;
                 break;
@@ -397,4 +411,63 @@ public class PrincipaleActivity extends AppCompatActivity
                     }
                 });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static class DummyFragment extends Fragment {
+        int color;
+        SimpleRecyclerAdapter adapter;
+
+        public DummyFragment() {
+        }
+
+        @SuppressLint("ValidFragment")
+        public DummyFragment(int color) {
+            this.color = color;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.dummy_fragment, container, false);
+
+            final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.dummyfrag_bg);
+            frameLayout.setBackgroundColor(color);
+
+            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.dummyfrag_scrollableview);
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
+            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.setHasFixedSize(true);
+
+            List<String> list = new ArrayList<String>();
+            for (int i = 0; i < VersionModel.data.length; i++) {
+                list.add(VersionModel.data[i]);
+            }
+
+            adapter = new SimpleRecyclerAdapter(list);
+            recyclerView.setAdapter(adapter);
+
+            return view;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 }

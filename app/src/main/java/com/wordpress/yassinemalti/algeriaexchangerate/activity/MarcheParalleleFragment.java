@@ -26,7 +26,7 @@ import java.util.List;
 
 public class MarcheParalleleFragment extends Fragment {
 
-    private static final String TAG = "MaintenantFragment";
+    private static final String TAG = "MarcheParalleleFragment";
     public TextView txtDesc;
     String url = "https://www.devise-dz.com/";
     ProgressDialog progressDialog;
