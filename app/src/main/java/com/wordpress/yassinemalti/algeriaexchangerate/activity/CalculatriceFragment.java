@@ -7,9 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
@@ -57,16 +54,6 @@ public class CalculatriceFragment extends Fragment {
         NativeExpressAdView adBanner_calculatrice = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_calculatrice);
         AdRequest request_calculatrice = new AdRequest.Builder().build();
         adBanner_calculatrice.loadAd(request_calculatrice);
-
-        WebView myWebView = (WebView) rootView.findViewById(R.id.activity_demain_webview);
-        myWebView.loadUrl("http://m.kooora.com/?region=-4");
-
-        // Enable Javascript
-        WebSettings webSettings = myWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        // Force links and redirects to open in the WebView instead of in a browser
-        myWebView.setWebViewClient(new WebViewClient());
 
         return rootView;
     }

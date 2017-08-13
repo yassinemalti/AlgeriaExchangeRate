@@ -21,12 +21,10 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <WebView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:id="@+id/activity_demain_webview" />
+
+
+
+
 
             </LinearLayout>
 
@@ -46,7 +44,7 @@
             android:id="@+id/adBanner_calculatrice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            ads:adUnitId="ca-app-pub-2326345806005611/4325527866"
+            ads:adUnitId="ca-app-pub-2326345806005611/1910138089"
             ads:adSize="280x70"/>
     </LinearLayout>
 

@@ -27,9 +27,11 @@
         <TextView
             android:id="@+id/listitem_name"
             style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Android version name"/>
+            tools:text="Title"/>
 
         <TextView
             android:id="@+id/listitem_subname"
