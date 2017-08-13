@@ -26,16 +26,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
-                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:paddingBottom="@dimen/activity_paddingBottom"
                     android:paddingTop="@dimen/activity_horizontal_margin"/>
-
-                <TextView
-                    android:id="@+id/desctxt00"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:background="#fff"
-                    android:elevation="4dp"
-                    android:gravity="center" />
 
             </LinearLayout>
 
@@ -52,10 +44,10 @@
         android:layout_gravity="bottom|center_horizontal">
 
         <com.google.android.gms.ads.NativeExpressAdView
-            android:id="@+id/adBanner_maintenant"
+            android:id="@+id/adBanner_marcheparallele"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            ads:adUnitId="ca-app-pub-2326345806005611/2049738886"
+            ads:adUnitId="ca-app-pub-2326345806005611/1919968796"
             ads:adSize="280x70"/>
     </LinearLayout>
 

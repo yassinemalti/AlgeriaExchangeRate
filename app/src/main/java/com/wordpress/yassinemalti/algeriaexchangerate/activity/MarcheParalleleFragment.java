@@ -11,13 +11,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.wordpress.yassinemalti.algeriaexchangerate.R;
 import com.wordpress.yassinemalti.algeriaexchangerate.adapter.SimpleRecyclerAdapter;
-import com.wordpress.yassinemalti.algeriaexchangerate.model.VersionModel;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -31,8 +29,8 @@ import java.util.List;
 public class MarcheParalleleFragment extends Fragment {
 
     private static final String TAG = "MarcheParalleleFragment";
-    public TextView txtDesc;
     String url = "https://www.devise-dz.com/";
+    public RecyclerView recyclerView;
     ProgressDialog progressDialog;
     SimpleRecyclerAdapter adapter;
 
@@ -72,24 +70,15 @@ public class MarcheParalleleFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_marche_parallele, container, false);
-        NativeExpressAdView adBanner_maintenant = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_maintenant);
-        AdRequest request_maintenant = new AdRequest.Builder().build();
-        adBanner_maintenant.loadAd(request_maintenant);
-        txtDesc = (TextView) rootView.findViewById(R.id.desctxt00);
+        NativeExpressAdView adBanner_marcheparallele = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_marcheparallele);
+        AdRequest request_marcheparallele = new AdRequest.Builder().build();
+        adBanner_marcheparallele.loadAd(request_marcheparallele);
 
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.devise_marcheparallele_scrollableview);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.devise_marcheparallele_scrollableview);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-
-        List<String> list = new ArrayList<String>();
-        for (int i = 0; i < VersionModel.data.length; i++) {
-            list.add(VersionModel.data[i]);
-        }
-
-        adapter = new SimpleRecyclerAdapter(list);
-        recyclerView.setAdapter(adapter);
 
         new Description().execute();
         return rootView;
@@ -125,6 +114,7 @@ public class MarcheParalleleFragment extends Fragment {
 
     private class Description extends AsyncTask<Void, Void, Void> {
         String desc;
+        List<String> list;
 
         @Override
         protected void onPreExecute() {
@@ -183,7 +173,7 @@ public class MarcheParalleleFragment extends Fragment {
                 desc = "";
                 for(int i=0; i<wordsIndex.size(); i++) {
                     switch (wordsIndex.get(i)) {
-                        case 0 : desc += "\n"; break;
+                        case 0 : desc += "#"; break;
                         case -7 : desc += "العملة "; break;
                         case -8 : desc += "الشراء "; break;
                         case -9 : desc += "البيع "; break;
@@ -211,6 +201,21 @@ public class MarcheParalleleFragment extends Fragment {
                     }
                 }
 
+                list = new ArrayList<String>();
+
+                descLength = desc.length();
+                String nouvelleLigne = "";
+                for(int i=0; i<descLength-3; i++) {
+                    if(desc.charAt(i) == '#' ){
+                        list.add(nouvelleLigne);
+                        nouvelleLigne = "";
+                    } else {
+                        nouvelleLigne += desc.charAt(i);
+                    }
+                }
+
+                adapter = new SimpleRecyclerAdapter(list);
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -221,7 +226,7 @@ public class MarcheParalleleFragment extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            txtDesc.setText(desc);
+            recyclerView.setAdapter(adapter);
             progressDialog.dismiss();
         }
     }

@@ -46,7 +46,7 @@
             android:id="@+id/adBanner_apropos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            ads:adUnitId="ca-app-pub-2326345806005611/7817070881"
+            ads:adUnitId="ca-app-pub-2326345806005611/6290357985"
             ads:adSize="280x70"/>
     </LinearLayout>
 

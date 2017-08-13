@@ -54,9 +54,9 @@ public class CalculatriceFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_calculatrice, container, false);
-        NativeExpressAdView adBanner_demain = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_demain);
-        AdRequest request_demain = new AdRequest.Builder().build();
-        adBanner_demain.loadAd(request_demain);
+        NativeExpressAdView adBanner_calculatrice = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_calculatrice);
+        AdRequest request_calculatrice = new AdRequest.Builder().build();
+        adBanner_calculatrice.loadAd(request_calculatrice);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_demain_webview);
         myWebView.loadUrl("http://m.kooora.com/?region=-4");

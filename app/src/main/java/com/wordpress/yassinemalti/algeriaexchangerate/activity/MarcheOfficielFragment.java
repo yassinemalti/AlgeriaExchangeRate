@@ -60,9 +60,9 @@ public class MarcheOfficielFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_marche_officiel, container, false);
-        NativeExpressAdView adBanner_aujourdhui = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_aujourdhui);
-        AdRequest request_aujourdhui = new AdRequest.Builder().build();
-        adBanner_aujourdhui.loadAd(request_aujourdhui);
+        NativeExpressAdView adBanner_marcheofficiel = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_marcheofficiel);
+        AdRequest request_marcheofficiel = new AdRequest.Builder().build();
+        adBanner_marcheofficiel.loadAd(request_marcheofficiel);
         myWebView = (WebView) rootView.findViewById(R.id.activity_aujourdhui_webview);
         new LoadPage().execute();
         return rootView;
