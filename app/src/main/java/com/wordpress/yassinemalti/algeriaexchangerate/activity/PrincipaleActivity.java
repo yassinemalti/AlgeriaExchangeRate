@@ -151,8 +151,8 @@ public class PrincipaleActivity extends AppCompatActivity
         localConfigurationUpdate();
         firebaseConfigurationUpdate();
 
-        navigationView.setCheckedItem(R.id.maintenant);
-        displayView(R.id.maintenant);
+        navigationView.setCheckedItem(R.id.marcheparallele);
+        displayView(R.id.marcheparallele);
 
         }
 
@@ -164,8 +164,8 @@ public class PrincipaleActivity extends AppCompatActivity
         }
         if (!viewIsAtHome) {
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-            navigationView.setCheckedItem(R.id.maintenant);
-            displayView(R.id.maintenant);
+            navigationView.setCheckedItem(R.id.marcheparallele);
+            displayView(R.id.marcheparallele);
         } else {
             if (doubleBackToExitPressedOnce){
                 moveTaskToBack(true);
