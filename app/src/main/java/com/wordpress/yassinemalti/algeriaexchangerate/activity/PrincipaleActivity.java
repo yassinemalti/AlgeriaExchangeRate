@@ -207,17 +207,17 @@ public class PrincipaleActivity extends AppCompatActivity
         currentViewID = viewId;
 
         switch (viewId) {
-            case R.id.maintenant:
+            case R.id.marcheparallele:
                 fragment = new MarcheParalleleFragment();
                 title  = "السوق الموازية";
                 viewIsAtHome = true;
                 break;
-            case R.id.aujourdhui:
+            case R.id.marcheofficiel:
                 fragment = new MarcheOfficielFragment();
                 title  = "السوق الرسمية";
                 viewIsAtHome = false;
                 break;
-            case R.id.demain:
+            case R.id.calculatrice:
                 fragment = new CalculatriceFragment();
                 title  = "الآلة الحاسبة";
                 viewIsAtHome = false;
